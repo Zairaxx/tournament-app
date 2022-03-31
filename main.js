@@ -42,7 +42,7 @@ let teams = [
 let renderTeams = (listOfTeams) => {
     listOfTeams.forEach(team => {
         let teamContainer = document.createElement("div");
-        teamContainer.style.border = "2px solid black";
+        teamContainer.style.border = "3px solid black";
 
         if(team.members.length !== team.maxMembers){
             teamContainer.classList.add("available");
