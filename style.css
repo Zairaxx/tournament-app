@@ -1,0 +1,9 @@
+.available {
+    background:forestgreen;
+    color:white;
+}
+
+.max {
+    background:red;
+    color:white;
+}   
