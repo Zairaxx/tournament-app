@@ -82,12 +82,35 @@ let renderTeams = (listOfTeams) => {
                 document.body.innerHTML = "";
                 renderTeams(teams);
             }
-        }) 
+        })
+
+        let addRandomBtn = document.createElement("button");
+        addRandomBtn.innerText = "Add random!";
+        addRandomBtn.addEventListener("click", async () => {
+            if(team.members.length < team.maxMembers){{
+                try {
+                let response = await fetch("https://randomuser.me/api/");
+                let data = await response.json();
+                console.log(data);
+                let newMember = data.results[0].name.first + " " + data.results[0].name.last;
+                team.members.push(newMember);
+                document.body.innerHTML = "";
+                renderTeams(teams);
+                } catch(error) {
+                    console.log("Something went wrong!", error)
+                } finally {
+                    console.log("I am done, im going to sleep!")
+                }
+            }}
+
+        })
 
 
-        teamContainer.append(textInput, addBtn, teamInfo, members, status);
+        teamContainer.append(textInput, addBtn, addRandomBtn, teamInfo, members, status);
         document.body.append(teamContainer)
     })
 }
 
 renderTeams(teams);
+
+
